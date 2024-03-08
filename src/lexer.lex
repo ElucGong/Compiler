@@ -8,8 +8,7 @@ int c;
 int calc(char *s, int len);
 char* str(char* s, int len);
 %}
-%start COMMENT1
-%start COMMENT2
+%start COMMENT1 COMMENT2
 
 %%
 
@@ -74,7 +73,7 @@ char* str(char* s, int len);
     return UNUM;
 }
 
-<INITIAL>[a-zA-Z][a-zA-Z0-9]* { 
+<INITIAL>[a-z_A-Z][a-z_A-Z0-9]* { 
     yylval.tokenId = A_TokenId(A_Pos(line, col), str(yytext, yyleng));
     col += yyleng;
     return ID;
